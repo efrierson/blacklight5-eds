@@ -723,15 +723,15 @@ module Blacklight::ArticlesHelperBehavior
     facets = '';
     if session[:results]['SearchResult']['AvailableFacets'].present?
       session[:results]['SearchResult']['AvailableFacets'].each do |facet|
-        facets = facets + '<div class="facet_limit blacklight-' + facet['Id'] + '"><h5 class="twiddle">' + facet['Label'] + '<i class="icon-chevron"></i></h5><ul style="display: block;">'
+        facets = facets + '<div class="panel panel-default facet_limit blacklight-' + facet['Id'] + '"><div class="collapse-toggle panel-heading collapsed" data-target="#facet-' + facet['Id'] + '" data-toggle="collapse"><h5 class="panel-title"><a href="#" data-no-turbolink="true">' + facet['Label'] + '</a></h5></div><div id="facet-' + facet['Id'] + '" class="panel-collapse facet-content collapse"><div class="panel-body"><ul class="facet-values list-unstyled">'
         facet.each do |key, val|
           if key == "AvailableFacetValues"
             val.each do |facetValue|
-              facets = facets + '<li><a class="facet_select" href="' + request.fullpath.split("?")[0] + "?" + generate_next_url + "&eds_action=" + CGI.escape(facetValue['AddAction'].to_s) + '">' + facetValue['Value'].to_s.titleize + '</a> <span class="count">' + facetValue['Count'].to_s + '</li>'
+              facets = facets + '<li><span class="facet-label"><a class="facet_select" href="' + request.fullpath.split("?")[0] + "?" + generate_next_url + "&eds_action=" + CGI.escape(facetValue['AddAction'].to_s) + '">' + facetValue['Value'].to_s.titleize + '</a></span> <span class="facet-count">' + facetValue['Count'].to_s + '</span></li>'
             end
           end
         end
-        facets = facets + '</ul></div>'
+        facets = facets + '</ul></div></div></div>'
       end
     end
     return facets.html_safe
