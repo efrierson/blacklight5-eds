@@ -50,6 +50,12 @@
 </script>
 <% end %>
 
+<div id="eds-search-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
+	<div class="container">
+		    <%= render :partial=>'search_form' %>
+	</div>
+</div>
+
 <div id="sidebar" class="col-md-3">
  <%= render :partial=>'search_links' %>
 
@@ -61,8 +67,6 @@
 
 <div id="content" class="col-md-9">
     
-    <%= render :partial=>'search_form' %>
-
     <% unless has_search_parameters? %>
 	    <%= render 'home' %>
     <% else %>
