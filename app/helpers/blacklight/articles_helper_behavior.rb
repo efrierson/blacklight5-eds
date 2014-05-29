@@ -185,7 +185,7 @@ module Blacklight::ArticlesHelperBehavior
     session[:debugNotes] << "<p>SEARCH QUERY AS STRING: " << searchquery.to_s
 #    searchquery = CGI::unescape(searchquery)
 #    session[:debugNotes] << "<br />ESCAPED: " << searchquery.to_s
-    searchquery = searchquery.gsub('limiter[]','limiter').gsub('facetfilter[]','facetfilter')
+    searchquery = searchquery.gsub('limiter%5B%5D','limiter').gsub('facetfilter%5B%5D','facetfilter')
     searchquery = searchquery.gsub('%28','(').gsub('%3A',':').gsub('%29',')').gsub('%23',',')
 #    searchquery = searchquery.gsub(':','%3A')
     session[:debugNotes] << "<br />FINAL: " << searchquery.to_s << "</p>"
