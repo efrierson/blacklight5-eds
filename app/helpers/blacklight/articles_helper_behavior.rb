@@ -675,7 +675,7 @@ module Blacklight::ArticlesHelperBehavior
       get_info
     end
     if session[:info]['AvailableSearchCriteria']['AvailableLimiters'].present?
-      limitershtml << '<form class="form"><ul style="margin-bottom:0px">'
+      limitershtml << '<div class="panel panel-default facet_limit blacklight-Limiters"><div class="collapse-toggle panel-heading" data-target="#facet-Limiters" data-toggle="collapse"><h5 class="panel-title"><a href="#" data-no-turbolink="true">Search Options</a></h5></div><div id="facet-Limiters" class="panel-collapse facet-content collapse in" style="height: auto;"><div class="panel-body"><form class="form"><ul class="facet-values list-unstyled">'
       session[:info]['AvailableSearchCriteria']['AvailableLimiters'].each do |limiter|
         if limiter["Type"] == "select"
           limiterChecked = false
@@ -698,7 +698,7 @@ module Blacklight::ArticlesHelperBehavior
           limiterCount += 1
         end
       end
-      limitershtml << '</ul></form>'
+      limitershtml << '</ul></form></div></div></div>'
       return limitershtml.html_safe
     else
       return session[:info].to_s
