@@ -170,7 +170,7 @@ module Blacklight::ArticlesHelperBehavior
     
     #repace the raw query, adding searchmode and fieldcode
     changedQuery = searchquery_extras.to_s + newoptions["query-1"].to_s
-    debugNotes << "CHANGEDQUERY: " << changedQuery.to_s
+    session[:debugNotes] << "CHANGEDQUERY: " << changedQuery.to_s
     newoptions["query-1"] = changedQuery
     
 #    uri = Addressable::URI.new
@@ -182,18 +182,18 @@ module Blacklight::ArticlesHelperBehavior
 
     searchquery = newoptions.to_query   
     # , : ( ) - unencoding expected punctuation
-    debugNotes << "<p>SEARCH QUERY AS STRING: " << searchquery.to_s
+    session[:debugNotes] << "<p>SEARCH QUERY AS STRING: " << searchquery.to_s
     searchquery = CGI::unescape(searchquery)
-    debugNotes << "<br />ESCAPED: " << searchquery.to_s
+    session[:debugNotes] << "<br />ESCAPED: " << searchquery.to_s
     searchquery = searchquery.gsub('%28','(').gsub('%3A',':').gsub('%29',')').gsub('%23',',')
     searchquery = searchquery.gsub(':','%3A')
-    debugNotes << "<br />FINAL: " << searchquery.to_s << "</p>"
+    session[:debugNotes] << "<br />FINAL: " << searchquery.to_s << "</p>"
     return searchquery
   end
     
   # main search function.  accepts string to be tacked on to API endpoint URL
   def search(apiquery)
-    debugNotes << "<p>API QUERY SENT: " << apiquery.to_s << "</p>"
+    session[:debugNotes] << "<p>API QUERY SENT: " << apiquery.to_s << "</p>"
     results = @connection.search(apiquery, @session_key, @auth_token, :json).to_hash
     
     #update session_key if new one was generated in the call
@@ -205,14 +205,14 @@ module Blacklight::ArticlesHelperBehavior
   end
   
   def retrieve(dbid, an, highlight = "")
-    debugNotes << "HIGHLIGHTBEFORE:" << highlight.to_s
+    session[:debugNotes] << "HIGHLIGHTBEFORE:" << highlight.to_s
     highlight.downcase!
     highlight.gsub! ',and,',','
     highlight.gsub! ',or,',','
     highlight.gsub! ',not,',','
-    debugNotes << "HIGHLIGHTAFTER: " << highlight.to_s
+    session[:debugNotes] << "HIGHLIGHTAFTER: " << highlight.to_s
     record = @connection.retrieve(dbid, an, highlight, @session_key, @auth_token, :json).to_hash
-    debugNotes << "RECORD: " << record.to_s
+    session[:debugNotes] << "RECORD: " << record.to_s
     #update session_key if new one was generated in the call
     checkSessionCurrency
 
