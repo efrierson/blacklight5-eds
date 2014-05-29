@@ -186,6 +186,7 @@ module Blacklight::ArticlesHelperBehavior
     searchquery = CGI::unescape(searchquery)
     debugNotes << "ESCAPED: " << searchquery.to_s
     searchquery = searchquery.gsub('%28','(').gsub('%3A',':').gsub('%29',')').gsub('%23',',')
+    searchquery = searchquery.gsub(':','%3A')
     return searchquery
   end
     
