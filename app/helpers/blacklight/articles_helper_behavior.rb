@@ -182,11 +182,12 @@ module Blacklight::ArticlesHelperBehavior
 
     searchquery = newoptions.to_query   
     # , : ( ) - unencoding expected punctuation
-    debugNotes << "SEARCH QUERY AS STRING: " << searchquery.to_s
+    debugNotes << "<p>SEARCH QUERY AS STRING: " << searchquery.to_s
     searchquery = CGI::unescape(searchquery)
-    debugNotes << "ESCAPED: " << searchquery.to_s
+    debugNotes << "<br />ESCAPED: " << searchquery.to_s
     searchquery = searchquery.gsub('%28','(').gsub('%3A',':').gsub('%29',')').gsub('%23',',')
     searchquery = searchquery.gsub(':','%3A')
+    debugNotes << "<br />FINAL: " << searchquery.to_s << "</p>"
     return searchquery
   end
     
