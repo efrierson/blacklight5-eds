@@ -23,51 +23,12 @@
     margin-top: 0;
 }
 
-.navbar .brand {
-    background: url("blacklight/blacklight-logo-h50-transparent-white-text.png") no-repeat scroll left top transparent;
-    background-size: auto 40px;
-}
-.navbar-inner {
-    background-image: linear-gradient(to bottom, #1079C9, #005BC6);
-    background-repeat: repeat;
-    border-bottom: 2.5px solid #1C7020;
-}
-
-.navbar-inner a {
-    color: #FFFFFF;
-    font-weight: bold;
-}
-
-.btn-primary {
-    background-image: linear-gradient(to bottom, #1C7020, #156619);
-}
-
-.btn-primary:hover,
-.btn-primary:active,
-.btn-primary.active,
-.btn-primary.disabled {
-    background-image: linear-gradient(to bottom, #156619, #1C7020);
-    background-color: #156619;
-}
-
 highlight {
     background-color: yellow;
 }
 
 superscript {
     display: none;
-}
-
-.search_field {
-    width: 100px;
-}
-
-.index_title {
-    max-width: 90%;
-}
-
-.clearfix:after, .no-js #sortAndPerPage:after, .facet_pagination:after {
-    clear: left;
 }
 
 .record-image {
@@ -93,10 +54,6 @@ superscript {
 
 .record-image img {
     max-width: 70px;
-}
-
-#per_page-dropdown {
-    padding-left: 1em; 
 }
 
 .pt-icon { width: 70px; float: left; display: inline-block; background-image: url('blacklight/PT_Sprite.png'); background-repeat: no-repeat; }
