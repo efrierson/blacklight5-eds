@@ -711,10 +711,10 @@ module Blacklight::ArticlesHelperBehavior
     currentYear = timeObj.year
     fiveYearsPrior = currentYear - 5
     tenYearsPrior = currentYear - 10
-    dateString << '<div class="facet_limit blacklight-date"><h5 class="twiddle">Date<i class="icon-chevron"></i></h5><ul style="display: block;">'
-    dateString << '<li><a href="' << request.fullpath.split("?")[0] << "?" << generate_next_url << '&eds_action=addlimiter(DT1:' << fiveYearsPrior.to_s << '-01/' << currentYear.to_s << '-12)">Last 5 Years</a></li>'
+    dateString << '<div class="panel panel-default facet_limit blacklight-Date"><div class="collapse-toggle panel-heading collapsed" data-toggle="collapse" data-target="#facet-Date"><h5 class="panel-title"><a data-no-turbolink="true" href="#">Date</a></h5></div><div id="facet-Date" class="panel-collapse facet-content collapse"><div class="panel-body"><ul class="facet-values list-unstyled">'
+    dateString << '<li><span class="facet-label"><a href="' << request.fullpath.split("?")[0] << "?" << generate_next_url << '&eds_action=addlimiter(DT1:' << fiveYearsPrior.to_s << '-01/' << currentYear.to_s << '-12)">Last 5 Years</a></span></li>'
     dateString << '<li><a href="' << request.fullpath.split("?")[0] << "?" << generate_next_url << '&eds_action=addlimiter(DT1:' << tenYearsPrior.to_s << '-01/' << currentYear.to_s << '-12)">Last 10 Years</a></li>'
-    dateString << '</ul></div>'
+    dateString << '</ul></div></div></div>'
     return dateString.html_safe
   end
 	
