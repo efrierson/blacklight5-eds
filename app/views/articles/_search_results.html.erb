@@ -15,7 +15,7 @@
   <span class="pt-icon pt-<%= show_pubtypeid(result) %>"></span>
   <% end %><br /><%= show_pubtype(result) %>
 </div>
-<div class="documentHeader clearfix">
+<div class="documentHeader">
   <% if has_restricted_access?(result) %>
     <h5 class="index_title"><%= show_resultid(result) %>. This result cannot be shown to guests.  <%= link_to "Please log in to see this result.", show_detail_link(result, show_resultid(result), params[:q]) %></h5>    
   <% else %>
