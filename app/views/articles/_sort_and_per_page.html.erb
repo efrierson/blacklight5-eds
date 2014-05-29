@@ -1,15 +1,15 @@
 <% if session[:results]['SearchResult']['Data']['Records'].present? %>
-<div id="sortAndPerPage">
+<div id="sortAndPerPage" class="clearfix">
    <div class="page_links">
      <%= render :partial => "paginate_compact" %>
    </div>
-   
+   <div class="search-widgets pull-right">
     <%= render :partial => 'sort_widget' %>
 
     <%= render :partial => 'per_page_widget' %>
 
     <%= render :partial => 'view_options_widget' %>
-    
+   </div>
 </div>
 <% else %>
 <div id="sortAndPerPage">
