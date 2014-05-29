@@ -1,6 +1,6 @@
 <% if has_eds_facets? %>
 <div id="facets" class="facets sidenav">
-	
+  <div class="top-panel-heading panel-heading">
   <h4 data-toggle="collapse" data-target=".facets-collapse">
 
       <a class="btn btn-navbar">
@@ -10,8 +10,8 @@
   	<%= t('blacklight.search.facets.title') %>
 
   </h4>
-
-  <div class="facets-collapse">
+  </div>
+  <div id="facet-panel-collapse" class="collapse panel-group">
     <%= show_limiters %>
     <%= show_date_options %>
     <%= show_facets %>
