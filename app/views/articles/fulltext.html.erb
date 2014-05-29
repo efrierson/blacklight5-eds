@@ -14,8 +14,9 @@
 
 
 <% if has_pdf?(record) %>
-<%= link_to "Loading PDF Full Text", show_pdf_link(record) %>
-<iframe src="<%= show_pdf_link(record) %>"></iframe>
+<%= link_to "Download PDF", show_pdf_link(record) %>
+<br />
+<iframe src="<%= show_pdf_link(record) %>" style="width: 100%; height: auto;"></iframe>
 <% elsif has_html?(record) %>
 <meta http-equiv="REFRESH" content="0;url=<%= request.fullpath.split("/fulltext")[0] %>" />
 <%= link_to "Loading HTML Full Text", request.fullpath.split("/fulltext")[0] %>
