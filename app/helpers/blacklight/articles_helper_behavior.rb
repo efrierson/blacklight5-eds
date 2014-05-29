@@ -193,6 +193,7 @@ module Blacklight::ArticlesHelperBehavior
     
   # main search function.  accepts string to be tacked on to API endpoint URL
   def search(apiquery)
+    debugNotes << "<p>API QUERY SENT: " << apiquery.to_s << "</p>"
     results = @connection.search(apiquery, @session_key, @auth_token, :json).to_hash
     
     #update session_key if new one was generated in the call
